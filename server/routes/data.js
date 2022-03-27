@@ -1,6 +1,5 @@
 const express = require("express");
 const route = express.Router();
-const dataModel=require('../models/InitialData');
 const conn=require('../db/conn.js');
 let categorias=["pregunta","comparativo","enunciado","nombre","piropo"];
 
