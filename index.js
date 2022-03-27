@@ -21,14 +21,16 @@ app.use('/',(req,res,next)=>{
   next();
 });
 
+
+//path.resolve(__dirname, '../public/index.html')
+app.get('/',(req,res)=>{
+  console.log(req.originalUrl);
+  res.sendFile('./public/index.html');
+});
+
 app.all('/api/*',(req,res,next)=>{
   console.log(req.url);
   next();
-});
-
-app.get('/api',(req,res)=>{
-  console.log(req.originalUrl);
-  res.sendFile(path.resolve(__dirname, '../public/index.html'))
 });
 
 app.use(require("./server/routes/data"));
