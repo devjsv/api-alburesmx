@@ -31,7 +31,7 @@ app.get('/api',(req,res)=>{
   res.sendFile(path.resolve(__dirname, '../public/index.html'))
 });
 
-app.use(require("./routes/data"));
+app.use(require("./server/routes/data"));
 
 
 //app.use('/public',express.static(path.join(__dirname,'/public')));
