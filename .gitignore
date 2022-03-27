@@ -5,3 +5,5 @@ data.json
 /node_modules
 
 pruebas.js
+
+.DS_Store

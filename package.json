@@ -1,14 +1,14 @@
 {
   "name": "api-basica",
   "version": "1.0.0",
-  "description": "",
-  "main": "pruebas.js",
+  "description": "Una api basica de albures",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev":"nodemon server/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jose V",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",

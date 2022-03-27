@@ -5,6 +5,7 @@ let path=require('path');
 //const cors=require('cors')
 require("dotenv").config({path:__dirname+'/config.env'});//{ path: "./config.env" }
 const port = process.env.PORT || 5000;
+//const host=process.env.HOST || '0.0.0.0';
 
 app.set('port',port);
 //app.use(cors());
@@ -58,4 +59,4 @@ app.listen(app.get('port'), () => {
   console.log(`Server is running on port: ${app.get('port')}`);
 });
 
-module.exports=app;
+//module.exports=app;
