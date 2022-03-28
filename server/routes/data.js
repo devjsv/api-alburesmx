@@ -2,9 +2,9 @@ const express = require("express");
 const route = express.Router();
 const conn=require('../db/conn.js');
 let categorias=["pregunta","comparativo","enunciado","nombre","piropo"];
-
-route.get('/api/categorias',(req,res)=>{
-    conn.collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
+//sin commit, agregue async para categorias
+route.get('/api/categorias',async (req,res)=>{
+    await conn.collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
     {$group:{"_id":"$tipo"}}]).toArray((err,result)=>{
         if (err){ 
             res.json({error:err,message:err.message});
@@ -16,13 +16,13 @@ route.get('/api/categorias',(req,res)=>{
     });
 })
 
-route.get('/api/:tipo/todos',(req,res,next)=>{
+route.get('/api/:tipo/todos',async (req,res,next)=>{
     console.log(req.params);
     let {tipo}=req.params;
     if(!categorias.includes(tipo)){
         next()
     }else{
-    conn.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
+    await conn.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
         //result es un objeto
         if (err){ 
           res.json({error:err,message:err.message});
@@ -35,14 +35,14 @@ route.get('/api/:tipo/todos',(req,res,next)=>{
     }   
 });
 
-route.get('/api/:tipo', (req,res,next)=>{
+route.get('/api/:tipo',async (req,res,next)=>{
     console.log(req.params);
     console.log(req.query);
     let {tipo}=req.params;
     if(!categorias.includes(tipo)){
         next()
     }else{
-    conn.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
+    await conn.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
         //result es un objeto
         if (err){ 
           res.json({error:err,message:err.message});
