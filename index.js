@@ -25,7 +25,7 @@ app.use('/',(req,res,next)=>{
 //path.resolve(__dirname, '../public/index.html')
 app.get('/',(req,res)=>{
   console.log(req.originalUrl);
-  res.sendFile('./public/index.html');
+  res.sendFile(__dirname+'/public/index.html');
 });
 
 app.all('/api/*',(req,res,next)=>{
