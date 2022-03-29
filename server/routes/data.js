@@ -13,13 +13,6 @@ route.get('/api/categorias',async (req,res)=>{
     }else{
         console.log('no conectado');
     }
-    /*
-    if(mongoose.connection.readyState===1){
-        console.log('existe conn');
-    }else{
-        console.log('no conectado');
-    }
-    */
     await ladb.collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
     {$group:{"_id":"$tipo"}}]).
     toArray((err,result)=>{
@@ -29,8 +22,8 @@ route.get('/api/categorias',async (req,res)=>{
         }else{
             let resultado=result.map(obj=>obj._id);
             res.json(resultado);
-            
         }
+        ladb.close();
     });
 })
 
@@ -41,6 +34,11 @@ route.get('/api/:tipo/todos',async (req,res,next)=>{
         next()
     }else{
     let ladb=await conn.conectarse();
+    if(ladb.readyState===1){
+        console.log('conectado');
+    }else{
+        console.log('no conectado');
+    }
     //conn.getDB()
     await ladb.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
         //result es un objeto
@@ -50,8 +48,9 @@ route.get('/api/:tipo/todos',async (req,res,next)=>{
         }else{
             let resultado=result.map(dato=>dato.albur);
             res.json(resultado);
-            ladb.close();
+            
         }
+        ladb.close();
       }); 
     }   
 });
@@ -63,9 +62,14 @@ route.get('/api/:tipo',async (req,res,next)=>{
     if(!categorias.includes(tipo)){
         next()
     }else{
-        //let conn_a=await conn.getDB();
-        //console.log("conn_a:",conn_a);
-    await conn.getDB().collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
+    let ladb=await conn.conectarse();
+    if(ladb.readyState===1){
+        console.log('conectado');
+    }else{
+        console.log('no conectado');
+    }
+    //conn.getDB()
+    await ladb.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
         //result es un objeto
         if (err){ 
           res.json({error:err,message:err.message});
@@ -77,8 +81,8 @@ route.get('/api/:tipo',async (req,res,next)=>{
             resultado=result[indice];
             delete resultado._id;
             res.json(resultado);
-        }else
-            res.json({mensaje:"nanai"})
+        }
+        ladb.close();
       }); 
     }   
 });
@@ -86,7 +90,8 @@ route.get('/api/:tipo',async (req,res,next)=>{
 //console.log("nombre de la coleccion: ", dataModel.collection.collectionName);
 //console.log("Nombre del modelo: ", dataModel.modelName);
 route.get('/asd',async(req,res)=>{
-    console.log("collection:",await conn.getDB().collection('initial_datas').find({}).toArray())
+    let data=await conn.getDB().collection('initial_datas').find({}).toArray();
+    res.send(data)
 });
 
 module.exports=route;
