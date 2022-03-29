@@ -7,7 +7,7 @@ console.log('en conn');
 function dbConnection(){
   mongoose.connect(uri,{useNewUrlParser: true,useUnifiedTopology: true})
   .then((db)=>{
-    _db=db.db;
+    _db=db;
     console.log("Conexión exitosa")//db es la referencia a la base de datos 
   })
   .catch(e=>console.log("Error de conexión: ",e.message));
@@ -16,10 +16,10 @@ function dbConnection(){
 }
 dbConnection();
 
-_db.on('open', function () {
-    console.log("Host de la base de datos: ",_db.host);
-    console.log("Nombre de la base de datos: ",_db.name);
-  _db.db.listCollections().toArray(function (err, names) {
+mongoose.connection.on('open', function () {
+    //console.log("Host de la base de datos: ",_db.host);
+    //console.log("Nombre de la base de datos: ",_db.name);
+  mongoose.connection.db.listCollections().toArray(function (err, names) {
     if (err) {
       console.log(err);
     } else {
@@ -43,14 +43,12 @@ mongoose.connection.db.collections()
 //_db.on('disconnecting', console.error.bind(console, 'MongoDB disconnecting'));
 //_db.on('disconnected', console.error.bind(console, 'MongoDB disconnected'));
 
-module.exports=_db;
-/*
-{
+module.exports={
   getDB:function(){
     return _db;
   }
 }
-*/
+
 
 /*
 _db.on('disconnected',()=>{
