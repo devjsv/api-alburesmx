@@ -1,0 +1,134 @@
+
+body{
+    
+    
+    q-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    q-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    q-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    
+    
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+
+    qheight: 100%;
+    margin: 0;
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid blue;
+    
+    
+    /*
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    */
+}
+a,a:visited{
+    color: #FFFFFF;
+}
+.container{
+    padding: 0 10px 0 10px ;
+    border: 1px solid green;
+    width: 80%;
+    margin: 0 auto;
+}
+.contenedor_ejemplo{
+    qwidth: 60%;
+    border: 1px solid blue;
+    
+    margin: 0 auto;
+}
+#titulo{
+    color: #e00a23;
+}
+section{
+    border: 1px solid #FFFFFF;
+    
+    qmargin: 0 auto;
+}
+pre{
+    qbackground-color: gray;
+}
+.contenedor_link{
+    border: 1px solid yellow;
+    bqackground-color: gray;
+    padding: 5px;
+    width: max-content;
+    qtext-align: center;
+    margin: 0 auto;
+}
+.fab{
+    color: wheat;
+    font-size: 3em;
+}
+.fas{
+    font-size: 1em;
+}
+.fa-copy{
+    font-size: 1.5em;
+}
+.copiado{
+    color: green;
+}
+.txt_copiar{
+    display: inline-block;
+    qmin-width: 200px;
+    padding: 5px;
+    border: 1px solid yellow;
+}
+.btn_copiar{
+    cursor:pointer;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+footer{    
+    border: 1px solid red;    
+    display: flex;
+    
+    qjustify-content: space-evenly;
+    /*si lo activo va sin padding el div*/
+
+    justify-content: center;
+    height: 80px;
+    padding: 0 0 20px 0;
+}
+footer div{
+    margin: auto 0;
+    border: 1px solid blue;
+    padding: 0 20px;
+    
+}
+footer div~div{
+    border-left: 1px solid white;
+}
+qfooter{
+    position: absolute;
+    bottom: 1px;
+    right: 0;
+    width: 100%;
+    height: 80px;
+    
+    display: flex;
+    justify-content: space-evenly;
+}
+@media screen and (max-width:600px) {
+    
+    footer{
+        padding: 10px 0 20px 0;
+        color:red;
+        display: block;
+        text-align: center;
+
+        height: min-content;
+        border: 1px solid white;
+    }
+    footer div{
+        padding: 10px 0;
+    }
+    footer div~div{
+        border-left: none;
+    }
+}

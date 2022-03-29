@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 //manda error si uso el modelo sin haberme conectado a la bd, con true(default) no pasa
 const uri=process.env.ATLAS_URI;
 var _db;
-
+console.log('en conn');
 function dbConnection(){
   mongoose.connect(uri,{useNewUrlParser: true,useUnifiedTopology: true})
   .then((db)=>{
@@ -13,7 +13,6 @@ function dbConnection(){
   _db=mongoose.connection;
   
 }
-
 dbConnection();
 
 _db.on('open', function () {
@@ -44,6 +43,13 @@ mongoose.connection.db.collections()
 //_db.on('disconnected', console.error.bind(console, 'MongoDB disconnected'));
 
 module.exports=_db;
+/*
+{
+  getDB:function(){
+    return _db;
+  }
+}
+*/
 
 /*
 _db.on('disconnected',()=>{
@@ -52,7 +58,13 @@ _db.on('disconnected',()=>{
 });
 */
 
-/*
+/* conn.js
+const client = new MongoClient(Db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+ 
+var _db;
 module.exports = {
   connectToServer: function (callback,ladb) {
     client.connect(function (err, db) {
@@ -70,4 +82,20 @@ module.exports = {
     return _db;
   },
 };
+
+
+reviews.js
+let db_connect =dbo.getDb();
+  
+  db_connect
+    .collection("initial_data")
+    .find({}).limit(3)
+    .toArray(function (err, result) {
+      if (err){ 
+        res.json({error:err,message:err.message});
+        throw err;
+      }else
+        res.json(result);
+    });    
+  });
 */

@@ -2,10 +2,13 @@ const express = require("express");
 const route = express.Router();
 const conn=require('../db/conn.js');
 let categorias=["pregunta","comparativo","enunciado","nombre","piropo"];
+console.log('en data');
+
 //sin commit, agregue async para categorias
 route.get('/api/categorias',async (req,res)=>{
-    await conn.collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
-    {$group:{"_id":"$tipo"}}]).toArray((err,result)=>{
+    let col=await conn.collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
+    {$group:{"_id":"$tipo"}}]);
+    await col.toArray((err,result)=>{
         if (err){ 
             res.json({error:err,message:err.message});
             throw err;

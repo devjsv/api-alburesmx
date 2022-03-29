@@ -4,16 +4,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo_ahorcado.ico" />
+    <link rel="stylesheet" href="style.css" />
     <title>Uso de la API</title>
 </head>
 <body>
-    <h2>Página inicial de la API Albures MX</h2>
-    <section>
-        <h3>Ejemplo de uso</h3>
+    <div class="container">
         <div>
-            <p>Obtener los tipos de albures:</p>
-            <code></code>
+            <h1><a href="./index.html">API Albures MX</a></h1>
+        </div>
+        <h2 id="titulo">Página inicial de la API Albures MX</h2>
+    <section>
+        <p> ... es una API JSON gratuita de albures clasificados diferentes tipos.</p>
+        <p></p>
+    </section>
+    <section>
+        <h3>Ejemplos de uso</h3>
+        <div>
+            <div class="contenedor_ejemplo">
+                <p>Obtener los tipos de albures:</p>
+                <div class="contenedor_link">   
+                    <pre class="txt_copiar" id="txt_copiar1">GET <a href="https://api-albures.vercel.app/api/categorias">https://api-albures.vercel.app/api/categorias</a></pre>
+                    <button id="btn_copiar1" class="btn_copiar" title="copiar" value="copiar1" 
+                    onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
+                </div>
+            </div>
+            <div class="contenedor_ejemplo">
+                <p>Ejemplo obtener un albur por categoria:</p>
+                <div class="contenedor_link">
+                    <pre class="txt_copiar" id="txt_copiar2">GET https://api-albures.vercel.app/api/{categoria}</pre>
+                    <button id="btn_copiar2" class="btn_copiar" title="copiar" value="copiar2" 
+                        onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
+                </div>
+            </div>
+            <div>
+                <p>Ejemplo obtener todos los albures de tipo:</p>
+                <pre class="txt_copiar" id="txt_copiar3">Text3</pre>
+            <button id="btn_copiar3" class="btn_copiar" title="copiar" value="copiar3" 
+                    onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
+            </div>
         </div>
     </section>
+    <section>
+        
+        
+    </section>
+    
+    <footer>
+        <div><p>Por: Gasgamdev </p></div>
+        <div><p id="year">&copy; </p></div>
+        <div><p><i class="fas fa-solid fa-envelope-open"></i> correo@gmail.com</p></div>
+        <div><a rel="noreferrer" href="https://github.com/gasgam" 
+            title="api repositorio" target="_blank" ><i class="fab fa-github repositorio"/></i></a></div>
+    </footer>
+
+    </div> <!--fin container--> 
+
+
+
+    <script>
+        window.onload = function(){
+            let fecha=new Date().getFullYear();
+            document.getElementById('year').innerHTML +=fecha;
+        };
+    </script>
+    <script>
+        function copiar(btn){
+            let txt=document.getElementById('txt_'+btn.value).innerText;
+            navigator.clipboard.writeText(txt);
+            btn.innerHTML="<p>Copiado</p>";
+            btn.classList.add('copiado');
+            //let a=document.getElementById('btn_copiar')
+            
+            setTimeout(()=>{
+                btn.innerHTML='<i class="fas fa-solid fa-copy"></i>';
+                btn.classList.remove('copiado');
+            },1000);
+        }
+    </script>
+
+
+    <script type="text/javascript" src="https://kit.fontawesome.com/f11e1bce80.js" crossorigin="anonymous"></script>
+    
 </body>
 </html>

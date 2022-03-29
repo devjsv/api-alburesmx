@@ -10,6 +10,10 @@ const port = process.env.PORT || 5000;
 app.set('port',port);
 //app.use(cors());
 
+//app.use('/publico',express.static(path.join(__dirname,'/publico')));
+app.use(express.static(__dirname+'/public'));
+//app.use(express.static('public')); 
+
 app.use((req, res, next) => {
   //res.header('Access-Control-Allow-Methods', 'GET');
   console.log('use sin nada');
