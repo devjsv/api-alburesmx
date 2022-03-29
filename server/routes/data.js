@@ -68,7 +68,7 @@ route.get('/api/:tipo',async (req,res,next)=>{
 //console.log("nombre de la coleccion: ", dataModel.collection.collectionName);
 //console.log("Nombre del modelo: ", dataModel.modelName);
 route.get('/asd',async(req,res)=>{
-    console.log("collection:",await conn.collection('initial_datas').find({}).toArray())
+    console.log("collection:",await conn.getDB().collection('initial_datas').find({}).toArray())
 });
 
 module.exports=route;
