@@ -25,7 +25,7 @@ route.get('/api/:tipo/todos',async (req,res,next)=>{
     if(!categorias.includes(tipo)){
         next()
     }else{
-    await conn.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
+    await conn.getDB().collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
         //result es un objeto
         if (err){ 
           res.json({error:err,message:err.message});
@@ -45,7 +45,9 @@ route.get('/api/:tipo',async (req,res,next)=>{
     if(!categorias.includes(tipo)){
         next()
     }else{
-    await conn.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
+        //let conn_a=await conn.getDB();
+        //console.log("conn_a:",conn_a);
+    await conn.getDB().collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
         //result es un objeto
         if (err){ 
           res.json({error:err,message:err.message});

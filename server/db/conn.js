@@ -4,15 +4,14 @@ var mongoose = require('mongoose');
 const uri=process.env.ATLAS_URI;
 var _db;
 console.log('en conn');
-function dbConnection(){
-  mongoose.connect(uri,{useNewUrlParser: true,useUnifiedTopology: true})
+async function dbConnection(){
+  mongoose.connect(uri,{useNewUrlParser: true,useUnifiedTopology: true})  
   .then((db)=>{
-    _db=db;
+    _db=db.connection.db;
     console.log("Conexión exitosa")//db es la referencia a la base de datos 
   })
   .catch(e=>console.log("Error de conexión: ",e.message));
   //_db=mongoose.connection;
-  
 }
 dbConnection();
 
