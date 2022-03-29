@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div>
-            <h1><a href="./index.html">API Albures MX</a></h1>
+            <h1><a href="/">API Albures MX</a></h1>
         </div>
         <h2 id="titulo">Página inicial de la API Albures MX</h2>
     <section>
@@ -24,7 +24,7 @@
             <div class="contenedor_ejemplo">
                 <p>Obtener los tipos de albures:</p>
                 <div class="contenedor_link">   
-                    <pre class="txt_copiar" id="txt_copiar1">GET <a href="https://api-albures.vercel.app/api/categorias">https://api-albures.vercel.app/api/categorias</a></pre>
+                    <pre class="txt_copiar">GET <a id="txt_copiar1" href="https://api-albures-2.vercel.app/api/categorias">https://api-albures-2.vercel.app/api/categorias</a></pre>
                     <button id="btn_copiar1" class="btn_copiar" title="copiar" value="copiar1" 
                     onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
                 </div>
@@ -32,10 +32,12 @@
             <div class="contenedor_ejemplo">
                 <p>Ejemplo obtener un albur por categoria:</p>
                 <div class="contenedor_link">
-                    <pre class="txt_copiar" id="txt_copiar2">GET https://api-albures.vercel.app/api/{categoria}</pre>
-                    <button id="btn_copiar2" class="btn_copiar" title="copiar" value="copiar2" 
-                        onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
+                    <pre class="txt_copiar" id="txt_copiar2">GET https://api-albures-2.vercel.app/api/{categoria}</pre>
+                    <!--button id="btn_copiar2" class="btn_copiar" title="copiar" value="copiar2" 
+                        onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button-->
                 </div>
+                <p>Ejemplo de respuesta:</p>
+                <pre>{"tipo":"comparativo","albur":"No es lo mismo la papaya tapatía, que tápate la papaya Tía."}</pre>
             </div>
             <div>
                 <p>Ejemplo obtener todos los albures de tipo:</p>
