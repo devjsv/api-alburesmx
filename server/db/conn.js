@@ -7,7 +7,8 @@ console.log('en conn');
 async function dbConnection(){
   mongoose.connect(uri,{useNewUrlParser: true,useUnifiedTopology: true})  
   .then((db)=>{
-    _db=db.connection.db;
+    _db=db.connection;
+    
     console.log("Conexión exitosa")//db es la referencia a la base de datos 
   })
   .catch(e=>console.log("Error de conexión: ",e.message));
@@ -40,7 +41,7 @@ mongoose.connection.db.collections()
 //_db.on('connected', console.error.bind(console, 'MongoDB connected'));
 //_db.on('open', console.error.bind(console, 'MongoDB open'));
 //_db.on('disconnecting', console.error.bind(console, 'MongoDB disconnecting'));
-//_db.on('disconnected', console.error.bind(console, 'MongoDB disconnected'));
+mongoose.connection.on('disconnected', console.error.bind(console, 'MongoDB disconnected'));
 
 module.exports={
   getDB:function(){

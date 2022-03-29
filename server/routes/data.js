@@ -6,15 +6,19 @@ console.log('en data');
 
 //sin commit, agregue async para categorias
 route.get('/api/categorias',async (req,res)=>{
-    let col=await conn.getDB().collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
-    {$group:{"_id":"$tipo"}}]);
-    await col.toArray((err,result)=>{
+    if(await conn.getDB()){
+        console.log('existe conn');
+    }
+    await conn.getDB().collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
+    {$group:{"_id":"$tipo"}}]).
+    toArray((err,result)=>{
         if (err){ 
             res.json({error:err,message:err.message});
             throw err;
         }else{
             let resultado=result.map(obj=>obj._id);
             res.json(resultado);
+            
         }
     });
 })
