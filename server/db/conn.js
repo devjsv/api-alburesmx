@@ -30,6 +30,12 @@ mongoose.connection.on('open', function () {
   });
 });
 /*
+setTimeout(()=>{
+  //mongoose.connection.close();
+  //mongoose.disconnect();
+},10000);
+*/
+/*
 mongoose.connection.db.collections()
         .then(response=>{
             response.forEach(res=>{
@@ -42,11 +48,15 @@ mongoose.connection.db.collections()
 //_db.on('open', console.error.bind(console, 'MongoDB open'));
 //_db.on('disconnecting', console.error.bind(console, 'MongoDB disconnecting'));
 mongoose.connection.on('disconnected', console.error.bind(console, 'MongoDB disconnected'));
+mongoose.connection.on('disconnected',()=>{
+  console.log('reconectandoe');
+  dbConnection();
+});
 
 module.exports={
   getDB:function(){
     return _db;
-  }
+  },
 }
 
 

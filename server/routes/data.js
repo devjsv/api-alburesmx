@@ -1,13 +1,16 @@
 const express = require("express");
 const route = express.Router();
+var mongoose = require('mongoose');
 const conn=require('../db/conn.js');
 let categorias=["pregunta","comparativo","enunciado","nombre","piropo"];
 console.log('en data');
 
 //sin commit, agregue async para categorias
 route.get('/api/categorias',async (req,res)=>{
-    if(await conn.getDB()){
+    if(mongoose.connection.readyState===1){
         console.log('existe conn');
+    }else{
+        console.log('no conectado');
     }
     await conn.getDB().collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
     {$group:{"_id":"$tipo"}}]).
