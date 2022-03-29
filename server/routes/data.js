@@ -7,12 +7,20 @@ console.log('en data');
 
 //sin commit, agregue async para categorias
 route.get('/api/categorias',async (req,res)=>{
+    let ladb=await conn.conectarse();//ladb=mongoose.connection
+    if(ladb.readyState===1){
+        console.log('conectado');
+    }else{
+        console.log('no conectado');
+    }
+    /*
     if(mongoose.connection.readyState===1){
         console.log('existe conn');
     }else{
         console.log('no conectado');
     }
-    await conn.getDB().collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
+    */
+    await ladb.collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
     {$group:{"_id":"$tipo"}}]).
     toArray((err,result)=>{
         if (err){ 
@@ -32,7 +40,9 @@ route.get('/api/:tipo/todos',async (req,res,next)=>{
     if(!categorias.includes(tipo)){
         next()
     }else{
-    await conn.getDB().collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
+    let ladb=await conn.conectarse();
+    //conn.getDB()
+    await ladb.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
         //result es un objeto
         if (err){ 
           res.json({error:err,message:err.message});
@@ -40,6 +50,7 @@ route.get('/api/:tipo/todos',async (req,res,next)=>{
         }else{
             let resultado=result.map(dato=>dato.albur);
             res.json(resultado);
+            ladb.close();
         }
       }); 
     }   
