@@ -7,10 +7,11 @@ console.log('en conn');
 function dbConnection(){
   mongoose.connect(uri,{useNewUrlParser: true,useUnifiedTopology: true})
   .then((db)=>{
+    _db=db.db;
     console.log("Conexión exitosa")//db es la referencia a la base de datos 
   })
   .catch(e=>console.log("Error de conexión: ",e.message));
-  _db=mongoose.connection;
+  //_db=mongoose.connection;
   
 }
 dbConnection();
