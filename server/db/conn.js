@@ -20,7 +20,8 @@ async function dbConnection(){
 mongoose.connection.on('open', function () {
     //console.log("Host de la base de datos: ",_db.host);
     //console.log("Nombre de la base de datos: ",_db.name);
-  mongoose.connection.db.listCollections().toArray(function (err, names) {
+  /*
+    mongoose.connection.db.listCollections().toArray(function (err, names) {
     if (err) {
       console.log(err);
     } else {
@@ -29,6 +30,7 @@ mongoose.connection.on('open', function () {
     }
     //mongoose.connection.close();
   });
+  */
 });
 /*
 setTimeout(()=>{

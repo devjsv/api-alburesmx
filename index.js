@@ -14,26 +14,37 @@ app.use(cors());
 app.use(express.static(__dirname+'/public'));
 //app.use(express.static('public')); 
 
+/****** */
+/*
+app.all("*", function (req, res, next) {
+  res.set("Access-Control-Allow-Origin", "*");
+  next();
+});
+*/
+/****** */
+
 app.use((req, res, next) => {
   //res.header('Access-Control-Allow-Methods', 'GET');
-  console.log('use sin nada');
+  console.log('use sin nada');//pasa por todas las peticiones
   next();
 });
 
 app.use('/',(req,res,next)=>{
-  console.log(req.originalUrl);
+  console.log('use con /');
+  //console.log(req.originalUrl);
   next();
 });
 
 
 //path.resolve(__dirname, '../public/index.html')
 app.get('/',(req,res)=>{
-  console.log(req.originalUrl);
   res.sendFile(__dirname+'/public/index.html');
 });
 
 app.all('/api/*',(req,res,next)=>{
-  console.log(req.url);
+  console.log('con todas las rutas /api/*');
+  //console.log(req.url);
+  //console.log(req.originalUrl);
   next();
 });
 
@@ -44,7 +55,7 @@ app.use(require("./server/routes/data"));
 let pagina404=path.resolve(__dirname, '../public/404.html');
 app.get('*',(req,res)=>{
   //res.sendFile(pagina404);
-  res.status(404).json({error:"Ruta no encontrada"})
+  res.status(404).send('Error')//.json({error:"Ruta no encontrada"})
   console.log('no se encontro la ágina');
 })
 
