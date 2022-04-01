@@ -2,13 +2,13 @@
 const express = require("express");
 const app = express();
 let path=require('path');
-//const cors=require('cors')
+const cors=require('cors')
 require("dotenv").config({ path: "./config.env" });////{path:__dirname+'/config.env'}
 const port = process.env.PORT || 5000;
 //const host=process.env.HOST || '0.0.0.0';
 
 app.set('port',port);
-//app.use(cors());
+app.use(cors());
 
 //app.use('/publico',express.static(path.join(__dirname,'/publico')));
 app.use(express.static(__dirname+'/public'));

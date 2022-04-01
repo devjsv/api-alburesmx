@@ -15,7 +15,7 @@ body{
     background-color: #000000;
     color: #FFFFFF;
     border: 1px solid blue;
-    min-width: 400px;
+    min-width: 380px;
     
     /*
     position: absolute;
@@ -27,6 +27,11 @@ body{
 }
 a,a:visited{
     color: #FFFFFF;
+    text-decoration: none;
+}
+#titulo{
+    color: #FFFFFF;
+    letter-spacing: 5px;
 }
 .container{
     padding: 0 10px 0 10px ;
@@ -34,18 +39,26 @@ a,a:visited{
     width: 80%;
     margin: 0 auto;
 }
+.contenedor_titulo{
+    background-color: #a804e3ba;
+    padding: 15px 0 10px 10px;
+
+}
+.contenedor_titulo h1{
+    qmargin: 0;
+}
 .contenedor_ejemplo{
     qwidth: 60%;
     border: 1px solid blue;
     padding: 5px;
     margin: 0 auto;
 }
-#titulo{
-    color: #e00a23;
+.ejemplos{
+    padding-bottom: 15px;
 }
 section{
     border: 1px solid #FFFFFF;
-    
+    padding: 0 5px;
     qmargin: 0 auto;
 }
 
@@ -103,7 +116,7 @@ section{
     font-size: 1em;
     display: inline-block;
     padding: 0 10px;
-    
+    margin-bottom: 20px;
 }
 .footer_div_autor div ~div{
     border-left: 1px solid white;

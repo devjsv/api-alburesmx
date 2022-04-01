@@ -8,22 +8,37 @@
     <link rel="stylesheet" href="style.css" />
     <title>Albures MX</title>
 </head>
-<body>
+<body >
+    <script>
+        async function getData(){
+            let response=await fetch("https://api-albures-2.vercel.app/api/nombre");
+            console.log(response);
+        }
+        getData();
+    </script>
     <div class="container">
-        <div>
-            <h1><a  href="/">Albures MX</a></h1>
+        <div class="contenedor_titulo">
+            <h1><a id="titulo"  href="/">AlburesMX</a></h1>
             <!--"https://api-albures-2.vercel.app"-->
         </div>
-        <h2 id="titulo">Página inicial de la API Albures MX</h2>
     <section>
-        <p>Albures MX es una API JSON gratuita de albures, clasificados diferentes categorias.</p>
+        <p>AlburesMX es una API JSON gratuita de albures clasificados diferentes categorias.</p>
+        <p>Las categorías disponibles son:</p>
+        <ul>
+            <li>comparativo</li>
+            <p>nombre</p>
+            <p>enunciado</p>
+            <p>piropo</p>
+            <p>pregunta</p>
+        </ul>
+        <!--pregunta,comparativo,nombre,enunciado,piropo-->
         <p></p>
     </section>
     <section class="ejemplos">
         <h3>Ejemplos de uso</h3>
         <div>
             <div class="contenedor_ejemplo">
-                <p>Obtener los tipos de albures:</p>
+                <p>- Para obtener los tipos de albures:</p>
                 <div class="contenedor_link">   
                     <code class="txt_copiar">GET <a id="txt_copiar1" href="https://api-albures-2.vercel.app/api/categorias">https://api-albures-2.vercel.app/api/categorias</a></code>
                     <div>
@@ -33,23 +48,19 @@
                 </div>
             </div>
             <div class="contenedor_ejemplo">
-                <p>Ejemplo d solicitud para obtener un albur por categoria:</p>
+                <p>- Para obtener un albur de una categoria específica:</p>
                 <div class="contenedor_link">
                     <code class="txt_copiar" id="txt_copiar2">GET https://api-albures-2.vercel.app/api/{categoria}</code>
                 </div>
-                <p>Ejemplo de la respuesta recibida:</p>
+                <p>- Ejemplo de la respuesta recibida:</p>
                 <div class="contenedor_respuesta">
                     <code> { <br>  "categoria":"comparativo", <br>  "albur":"No es lo mismo la papaya tapatía, que tápate la papaya Tía."<br> }</code>
                 </div>
             </div>
             <div class="contenedor_ejemplo">
-                <p>Ejemplo de solicitud para obtener todos los albures de una categoria:</p>
+                <p>- Para obtener todos los albures de una categoria específica:</p>
                 <div class="contenedor_link">
                     <code class="txt_copiar" id="txt_copiar3">GET https://api-albures-2.vercel.app/api/{categoria}/todos</code>
-                    <div>
-                        <button id="btn_copiar3" class="btn_copiar" title="copiar" value="copiar3" 
-                            onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
-                    </div>
                 </div>
             </div>
         </div>
