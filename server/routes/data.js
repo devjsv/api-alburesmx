@@ -1,7 +1,6 @@
 const express = require("express");
 const route = express.Router();
 const conn=require('../db/conn.js');
-let categorias=["pregunta","comparativo","enunciado","nombre","piropo"];
 console.log('en data');
 
 route.get('/albures/categorias',async (req,res)=>{
