@@ -21,7 +21,7 @@ route.get('/albures/categorias',async (req,res)=>{
 });
 
 route.get('/albures/:categoria',async (req,res,next)=>{
-    let {categoria}=req.params;
+    let {categoria}=req.params; 
     let ladb=await conn.conectarse();
     await ladb.collection('mx_albures').find({"categoria":categoria}).toArray(function (err, result) {
         if (err){ 
