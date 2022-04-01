@@ -1,6 +1,5 @@
 const express = require("express");
 const route = express.Router();
-var mongoose = require('mongoose');
 const conn=require('../db/conn.js');
 let categorias=["pregunta","comparativo","enunciado","nombre","piropo"];
 console.log('en data');
@@ -13,8 +12,8 @@ route.get('/api/categorias',async (req,res)=>{
     }else{
         console.log('no conectado');
     }
-    await ladb.collection('mx_albures').aggregate([{$project:{"tipo":1,"_id":0}},
-    {$group:{"_id":"$tipo"}}]).
+    await ladb.collection('mx_albures').aggregate([{$project:{"categoria":1,"_id":0}},
+    {$group:{"_id":"$categoria"}}]).
     toArray((err,result)=>{
         if (err){ 
             res.json({error:err,message:err.message});
@@ -27,10 +26,10 @@ route.get('/api/categorias',async (req,res)=>{
     });
 })
 
-route.get('/api/:tipo/todos',async (req,res,next)=>{
+route.get('/api/:categoria/todos',async (req,res,next)=>{
     console.log(req.params);
-    let {tipo}=req.params;
-    if(!categorias.includes(tipo)){
+    let {categoria}=req.params;
+    if(!categorias.includes(categoria)){
         next()
     }else{
     let ladb=await conn.conectarse();
@@ -40,7 +39,7 @@ route.get('/api/:tipo/todos',async (req,res,next)=>{
         console.log('no conectado');
     }
     //conn.getDB()
-    await ladb.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
+    await ladb.collection('mx_albures').find({"categoria":categoria}).toArray(function (err, result) {
         //result es un objeto
         if (err){ 
           res.json({error:err,message:err.message});
@@ -55,11 +54,11 @@ route.get('/api/:tipo/todos',async (req,res,next)=>{
     }   
 });
 
-route.get('/api/:tipo',async (req,res,next)=>{
+route.get('/api/:categoria',async (req,res,next)=>{
     console.log(req.params);
     console.log(req.query);
-    let {tipo}=req.params;
-    if(!categorias.includes(tipo)){
+    let {categoria}=req.params;
+    if(!categorias.includes(categoria)){
         next()
     }else{
     let ladb=await conn.conectarse();
@@ -69,7 +68,7 @@ route.get('/api/:tipo',async (req,res,next)=>{
         console.log('no conectado');
     }
     //conn.getDB()
-    await ladb.collection('mx_albures').find({"tipo":tipo}).toArray(function (err, result) {
+    await ladb.collection('mx_albures').find({"categoria":categoria}).toArray(function (err, result) {
         //result es un objeto
         if (err){ 
           res.json({error:err,message:err.message});
@@ -101,7 +100,7 @@ module.exports=route;
 
 /*
 route.get('/apis/prueba',async (req,res)=>{
-    let response=await conn.collection("mx_albures").find({tipo:"nombre"});
+    let response=await conn.collection("mx_albures").find({categoria:"nombre"});
     let arr=await response.toArray();
     console.log(arr);
 })

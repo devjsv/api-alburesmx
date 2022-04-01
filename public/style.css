@@ -8,14 +8,14 @@ body{
     
     
     font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    font-size: 1.2em;
 
     qheight: 100%;
     margin: 0;
     background-color: #000000;
     color: #FFFFFF;
     border: 1px solid blue;
-    
+    min-width: 400px;
     
     /*
     position: absolute;
@@ -37,7 +37,7 @@ a,a:visited{
 .contenedor_ejemplo{
     qwidth: 60%;
     border: 1px solid blue;
-    
+    padding: 5px;
     margin: 0 auto;
 }
 #titulo{
@@ -48,16 +48,30 @@ section{
     
     qmargin: 0 auto;
 }
-pre{
-    qbackground-color: gray;
-}
+
 .contenedor_link{
     border: 1px solid yellow;
-    bqackground-color: gray;
-    padding: 5px;
-    width: max-content;
-    qtext-align: center;
+    qbackground-color: gray;
+    padding: 10px 5px;
+    width: 85%;
     margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #444;
+    
+}
+.contenedor_link div{
+    display: inline;
+    
+}
+.contenedor_respuesta{
+    border: 1px solid yellow;
+    width: 85%;
+    margin: 0 auto;
+    padding: 10px;
+
+    border-radius: 5px;
+    background-color: #444;
 }
 .fab{
     color: wheat;
@@ -73,10 +87,11 @@ pre{
     color: green;
 }
 .txt_copiar{
-    display: inline-block;
+    display: inline;
     qmin-width: 200px;
     padding: 5px;
     border: 1px solid yellow;
+    
 }
 .btn_copiar{
     cursor:pointer;
@@ -84,26 +99,35 @@ pre{
     border-radius: 5px;
 }
 
+.footer_div_autor div{
+    font-size: 1em;
+    display: inline-block;
+    padding: 0 10px;
+    
+}
+.footer_div_autor div ~div{
+    border-left: 1px solid white;
+    border-width: 3px;
+}
 footer{    
+    
     border: 1px solid red;    
     display: flex;
-    
+    flex-direction: column;
     qjustify-content: space-evenly;
     /*si lo activo va sin padding el div*/
-
     justify-content: center;
-    height: 80px;
-    padding: 0 0 20px 0;
+    qheight: 80px;
+    qpadding: 0 0 50px 0;
+    text-align: center;
 }
 footer div{
-    margin: auto 0;
-    border: 1px solid blue;
-    padding: 0 20px;
+    qmargin: auto 0;
+    qborder: 1px solid blue;
+    padding: 20px 0;
     
 }
-footer div~div{
-    border-left: 1px solid white;
-}
+
 qfooter{
     position: absolute;
     bottom: 1px;
@@ -114,9 +138,27 @@ qfooter{
     display: flex;
     justify-content: space-evenly;
 }
-@media screen and (max-width:600px) {
-    
+@media screen and (max-width:660px) {
+    body{
+        font-size: 11px;
+    }
+    .container{
+        padding: 0;
+        width: 95%;
+    }
+    .contenedor_link div{
+        display: block;
+        margin-top: 10px;
+    }
+    .txt_copiar{
+        padding: 0;
+    }
+    .ejemplos button{
+        padding: 2px;
+    }
+
     footer{
+        font-size: 1.3em;
         padding: 10px 0 20px 0;
         color:red;
         display: block;
@@ -126,9 +168,9 @@ qfooter{
         border: 1px solid white;
     }
     footer div{
-        padding: 10px 0;
+        qpadding: 10px 0;
     }
     footer div~div{
-        border-left: none;
+        qborder-left: none;
     }
 }

@@ -6,64 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="logo_ahorcado.ico" />
     <link rel="stylesheet" href="style.css" />
-    <title>Uso de la API</title>
+    <title>Albures MX</title>
 </head>
 <body>
     <div class="container">
         <div>
-            <h1><a href="/">API Albures MX</a></h1>
+            <h1><a  href="/">Albures MX</a></h1>
+            <!--"https://api-albures-2.vercel.app"-->
         </div>
         <h2 id="titulo">Página inicial de la API Albures MX</h2>
     <section>
-        <p> ... es una API JSON gratuita de albures clasificados diferentes tipos.</p>
+        <p>Albures MX es una API JSON gratuita de albures, clasificados diferentes categorias.</p>
         <p></p>
     </section>
-    <section>
+    <section class="ejemplos">
         <h3>Ejemplos de uso</h3>
         <div>
             <div class="contenedor_ejemplo">
                 <p>Obtener los tipos de albures:</p>
                 <div class="contenedor_link">   
-                    <pre class="txt_copiar">GET <a id="txt_copiar1" href="https://api-albures-2.vercel.app/api/categorias">https://api-albures-2.vercel.app/api/categorias</a></pre>
-                    <button id="btn_copiar1" class="btn_copiar" title="copiar" value="copiar1" 
-                    onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
+                    <code class="txt_copiar">GET <a id="txt_copiar1" href="https://api-albures-2.vercel.app/api/categorias">https://api-albures-2.vercel.app/api/categorias</a></code>
+                    <div>
+                        <button id="btn_copiar1" class="btn_copiar" title="copiar" value="copiar1" 
+                            onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
+                    </div>
                 </div>
             </div>
             <div class="contenedor_ejemplo">
-                <p>Ejemplo obtener un albur por categoria:</p>
+                <p>Ejemplo d solicitud para obtener un albur por categoria:</p>
                 <div class="contenedor_link">
-                    <pre class="txt_copiar" id="txt_copiar2">GET https://api-albures-2.vercel.app/api/{categoria}</pre>
-                    <!--button id="btn_copiar2" class="btn_copiar" title="copiar" value="copiar2" 
-                        onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button-->
+                    <code class="txt_copiar" id="txt_copiar2">GET https://api-albures-2.vercel.app/api/{categoria}</code>
                 </div>
-                <p>Ejemplo de respuesta:</p>
-                <pre>{"tipo":"comparativo","albur":"No es lo mismo la papaya tapatía, que tápate la papaya Tía."}</pre>
+                <p>Ejemplo de la respuesta recibida:</p>
+                <div class="contenedor_respuesta">
+                    <code> { <br>  "categoria":"comparativo", <br>  "albur":"No es lo mismo la papaya tapatía, que tápate la papaya Tía."<br> }</code>
+                </div>
             </div>
-            <div>
-                <p>Ejemplo obtener todos los albures de tipo:</p>
-                <pre class="txt_copiar" id="txt_copiar3">Text3</pre>
-            <button id="btn_copiar3" class="btn_copiar" title="copiar" value="copiar3" 
-                    onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
+            <div class="contenedor_ejemplo">
+                <p>Ejemplo de solicitud para obtener todos los albures de una categoria:</p>
+                <div class="contenedor_link">
+                    <code class="txt_copiar" id="txt_copiar3">GET https://api-albures-2.vercel.app/api/{categoria}/todos</code>
+                    <div>
+                        <button id="btn_copiar3" class="btn_copiar" title="copiar" value="copiar3" 
+                            onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <section>
-        
-        
-    </section>
-    
+
     <footer>
-        <div><p>Por: Gasgamdev </p></div>
-        <div><p id="year">&copy; </p></div>
-        <div><p><i class="fas fa-solid fa-envelope-open"></i> correo@gmail.com</p></div>
-        <div><a rel="noreferrer" href="https://github.com/gasgam" 
-            title="api repositorio" target="_blank" ><i class="fab fa-github repositorio"/></i></a></div>
+        
+        <div class="footer_div_social">
+            <div><a rel="noreferrer" href="https://github.com/gasgam" 
+                title="api repositorio" target="_blank" ><i class="fab fa-github repositorio"/></i></a>
+            </div>
+        </div>
+        <div class="footer_div_autor">
+            <div><p>Por: Gasgamdev </p></div>
+            <div><p id="year">&copy; </p></div>
+            <div><p><i class="fas fa-solid fa-envelope-open"></i> correo@gmail.com</p></div>
+            
+        </div>
     </footer>
 
     </div> <!--fin container--> 
 
 
-
+    
     <script>
         window.onload = function(){
             let fecha=new Date().getFullYear();
