@@ -58,21 +58,23 @@
                     </div>
                 </div>
         </section>
-        <section>
-            <p>Info: Este proyecto fue desarrollado en Express.js y MongoDB.</p>
+        <section id="info">
+            <p> Info: Este proyecto fue desarrollado usando Express.js y MongoDB.</p>
+            <p> Aquí podras encontrar el repositorio de github de este proyecto: 
+                <a rel="noreferrer" href="https://github.com/jamon28/api.albures" target="_blank">AlburesMX</a> </p>
         </section>
         <footer>
         
             <div class="footer_div_social">
                 <div>
                     <a rel="noreferrer" href="https://github.com/gasgam" 
-                    title="Ir a repositorio" target="_blank" ><i class="fab fa-github repositorio"/></i></a>
+                    title="Repositorio github del autor" target="_blank" ><i class="fab fa-github repositorio"/></i></a>
                 </div>
             </div>
             <div class="footer_div_autor">
                 <div><p>Por: Gasgamdev </p></div>
                 <div><p id="year">&copy; 2022</p></div>
-                <div><p><i class="fas fa-solid fa-envelope-open"></i> correo@gmail.com</p></div>
+                <!--div><p><i class="fas fa-solid fa-envelope-open"></i> correo@gmail.com</p></div-->
             </div>
         </footer>   
     </div> <!--fin container--> 
@@ -81,9 +83,7 @@
         function copiar(btn){
             let txt=document.getElementById('copiar_url').innerText;
             navigator.clipboard.writeText(txt);
-            //btn.innerHTML="<p>Copiado</p>";
             btn.classList.add('copiado');
-            //let a=document.getElementById('btn_copiar')
             setTimeout(()=>{
                 btn.innerHTML='<i class="fas fa-solid fa-copy"></i>';
                 btn.classList.remove('copiado');
@@ -95,11 +95,3 @@
     
 </body>
 </html>
-
-<!--
-
-fetch('https://jsonplaceholder.typicode.com/todos/1')
-  .then(response => response.json())
-  .then(json => console.log(json))
-
--->

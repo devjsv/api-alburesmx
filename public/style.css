@@ -39,10 +39,17 @@ a,a:visited{
 
 }
 section{
-    padding: 0 5px 15px 5px;
+    padding: 5px 5px 15px 5px;
 }
 section ~ section{
     border-top: 1px solid #FFFFFF;
+}
+#info{
+    font-size: .8em;
+}
+#info a{
+    color: #38f735db;
+    letter-spacing: 3px;
 }
 .contenedor_ejemplo{
     padding: 5px;
@@ -139,7 +146,6 @@ qfooter{
         padding: 5px;
     }
     footer{
-        color:red;
         display: block;
         text-align: center;
         height: min-content;
