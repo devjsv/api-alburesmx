@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="logo_ahorcado.ico" />
+    <link rel="icon" href="gasgamdev_icon.ico" />
     <link rel="stylesheet" href="style.css" />
     <title>Albures MX</title>
 </head>
@@ -14,94 +14,82 @@
         <div class="contenedor_titulo">
             <h1><a id="titulo"  href="/">AlburesMX</a></h1>  <!--"https://api-albures-2.vercel.app"-->
         </div>
-    <section>
-        <p>
-            AlburesMX es una API JSON sencilla y gratuita que permite obtener albures clasificados en diferentes categorias.
-            No es necesario crear una cuenta de usuario ni el uso de una clave API para poder usar esta API. 
-        </p>
-        <p>Las categorías disponibles son:</p>
-        <ul>
-            <li>comparativo</li>
-            <li>nombre</li>
-            <li>enunciado</li>
-            <li>piropo</li>
-            <li>pregunta</li>
-        </ul>
-        <!--pregunta,comparativo,nombre,enunciado,piropo-->
-        <p></p>
-    </section>
-    <section class="ejemplos">
-        <h3>Ejemplos de uso</h3>
-        <div>
-            <div class="contenedor_ejemplo">
-                <p>- Para obtener los tipos de albures:</p>
-                <div class="contenedor_link">   
-                    <code class="txt_copiar">GET <a id="txt_copiar1" href="https://api-albures-2.vercel.app/api/categorias">https://api-albures-2.vercel.app/api/categorias</a></code>
-                    <div>
-                        <button id="btn_copiar1" class="btn_copiar" title="copiar" value="copiar1" 
+        <section>
+            <p>
+                AlburesMX es una API JSON sencilla y gratuita que permite obtener albures clasificados en diferentes categorias.
+                No es necesario crear una cuenta de usuario ni el uso de una clave API para poder usarla. 
+            </p>
+            <p>Las categorías disponibles son:</p>
+            <ul>
+                <li>comparativo</li>
+                <li>nombre</li>
+                <li>enunciado</li>
+                <li>piropo</li>
+                <li>pregunta</li>
+            </ul>
+            <p></p>
+        </section>
+        <section class="ejemplos">
+            <h3>Ejemplos de uso</h3>
+                <div class="contenedor_ejemplo">
+                    <p>- Para obtener los tipos de albures:</p>
+                    <div class="contenedor_link">   
+                        <code class="txt_copiar">GET <a id="copiar_url" href="https://api-albures-2.vercel.app/api/categorias">https://api-albures-2.vercel.app/albures/categorias</a></code>
+                        <div>
+                            <button id="btn_copiar1" class="btn_copiar" title="copiar" value="copiar1" 
                             onclick="copiar(this)"><i class="fas fa-solid fa-copy"></i></button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="contenedor_ejemplo">
-                <p>- Para obtener un albur de una categoria específica:</p>
-                <div class="contenedor_link">
-                    <code class="txt_copiar" id="txt_copiar2">GET https://api-albures-2.vercel.app/api/{categoria}</code>
+                <div class="contenedor_ejemplo">
+                    <p>- Para obtener un albur de una categoria específica:</p>
+                    <div class="contenedor_link">
+                        <code class="txt_copiar" >GET https://api-albures-2.vercel.app/albures/{categoria}</code>
+                    </div>
+                    <p>- Ejemplo de la respuesta recibida:</p>
+                    <div class="contenedor_respuesta">
+                        <code> { <br>  "categoria":"comparativo", <br>  "albur":"No es lo mismo la papaya tapatía, que tápate la papaya Tía."<br> }</code>
+                    </div>
                 </div>
-                <p>- Ejemplo de la respuesta recibida:</p>
-                <div class="contenedor_respuesta">
-                    <code> { <br>  "categoria":"comparativo", <br>  "albur":"No es lo mismo la papaya tapatía, que tápate la papaya Tía."<br> }</code>
+                <div class="contenedor_ejemplo">
+                    <p>- Para obtener todos los albures de una categoria específica:</p>
+                    <div class="contenedor_link">
+                        <code class="txt_copiar">GET https://api-albures-2.vercel.app/albures/{categoria}/todos</code>
+                    </div>
                 </div>
-            </div>
-            <div class="contenedor_ejemplo">
-                <p>- Para obtener todos los albures de una categoria específica:</p>
-                <div class="contenedor_link">
-                    <code class="txt_copiar" id="txt_copiar3">GET https://api-albures-2.vercel.app/api/{categoria}/todos</code>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+        </section>
+        <section>
+            <p>Info: Este proyecto fue desarrollado en Express.js y MongoDB.</p>
+        </section>
+        <footer>
         
-        <div class="footer_div_social">
-            <div><a rel="noreferrer" href="https://github.com/gasgam" 
-                title="api repositorio" target="_blank" ><i class="fab fa-github repositorio"/></i></a>
+            <div class="footer_div_social">
+                <div>
+                    <a rel="noreferrer" href="https://github.com/gasgam" 
+                    title="Ir a repositorio" target="_blank" ><i class="fab fa-github repositorio"/></i></a>
+                </div>
             </div>
-        </div>
-        <div class="footer_div_autor">
-            <div><p>Por: Gasgamdev </p></div>
-            <div><p id="year">&copy; </p></div>
-            <div><p><i class="fas fa-solid fa-envelope-open"></i> correo@gmail.com</p></div>
-            
-        </div>
-    </footer>
-
+            <div class="footer_div_autor">
+                <div><p>Por: Gasgamdev </p></div>
+                <div><p id="year">&copy; 2022</p></div>
+                <div><p><i class="fas fa-solid fa-envelope-open"></i> correo@gmail.com</p></div>
+            </div>
+        </footer>   
     </div> <!--fin container--> 
 
-
-    
-    <script>
-        window.onload = function(){
-            let fecha=new Date().getFullYear();
-            document.getElementById('year').innerHTML +=fecha;
-        };
-    </script>
     <script>
         function copiar(btn){
-            let txt=document.getElementById('txt_'+btn.value).innerText;
+            let txt=document.getElementById('copiar_url').innerText;
             navigator.clipboard.writeText(txt);
-            btn.innerHTML="<p>Copiado</p>";
+            //btn.innerHTML="<p>Copiado</p>";
             btn.classList.add('copiado');
             //let a=document.getElementById('btn_copiar')
-            
             setTimeout(()=>{
                 btn.innerHTML='<i class="fas fa-solid fa-copy"></i>';
                 btn.classList.remove('copiado');
             },1000);
         }
     </script>
-
 
     <script type="text/javascript" src="https://kit.fontawesome.com/f11e1bce80.js" crossorigin="anonymous"></script>
     

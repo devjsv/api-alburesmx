@@ -6,17 +6,12 @@ body{
     q-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     q-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     
-    
     font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size: 1.1em;
-
-    qheight: 100%;
     margin: 0;
     background-color: #000000;
     color: #FFFFFF;
-    border: 1px solid blue;
     min-width: 380px;
-    
     /*
     position: absolute;
     height: 100%;
@@ -34,112 +29,86 @@ a,a:visited{
     letter-spacing: 5px;
 }
 .container{
-    padding: 0 10px 0 10px ;
-    border: 1px solid green;
+    padding: 0 10px;
     width: 80%;
     margin: 0 auto;
 }
 .contenedor_titulo{
-    background-color: #a804e3ba;
+    background-color: #0ac506db;
     padding: 15px 0 10px 10px;
 
 }
-.contenedor_titulo h1{
-    qmargin: 0;
+section{
+    padding: 0 5px 15px 5px;
+}
+section ~ section{
+    border-top: 1px solid #FFFFFF;
 }
 .contenedor_ejemplo{
-    qwidth: 60%;
-    border: 1px solid blue;
     padding: 5px;
     margin: 0 auto;
 }
-.ejemplos{
-    padding-bottom: 15px;
-}
-section{
-    border: 1px solid #FFFFFF;
-    padding: 0 5px;
-    qmargin: 0 auto;
-}
-
 .contenedor_link{
-    border: 1px solid yellow;
-    qbackground-color: gray;
     padding: 10px 5px;
     width: 85%;
     margin: 0 auto;
     text-align: center;
     border-radius: 5px;
-    background-color: #444;
-    
+    background-color: #444; 
+    font-size: 0.9em;   
 }
 .contenedor_link div{
     display: inline;
-    
 }
-.contenedor_respuesta{
-    border: 1px solid yellow;
-    width: 85%;
-    margin: 0 auto;
-    padding: 10px;
-
+.txt_copiar{
+    display: inline;
+    padding: 5px;
+}
+.btn_copiar{
+    cursor:pointer;
+    padding: 7px;
     border-radius: 5px;
-    background-color: #444;
-}
-.fab{
-    color: wheat;
-    font-size: 3em;
-}
-.fas{
-    font-size: 1em;
-}
-.fa-copy{
-    font-size: 1.5em;
 }
 .copiado{
     color: green;
 }
-.txt_copiar{
-    display: inline;
-    qmin-width: 200px;
-    padding: 5px;
-    border: 1px solid yellow;
-    
-}
-.btn_copiar{
-    cursor:pointer;
-    padding: 5px;
+.contenedor_respuesta{
+    width: 85%;
+    margin: 0 auto;
+    padding: 10px;
     border-radius: 5px;
+    background-color: #444;
 }
-
-.footer_div_autor div{
-    font-size: 1em;
-    display: inline-block;
-    padding: 0 10px;
-    margin-bottom: 20px;
+.fab{
+    color: #FFFFFF;
+    font-size: 3em;
 }
-.footer_div_autor div ~div{
-    border-left: 1px solid white;
-    border-width: 3px;
+.fas, .fa-copy{
+    font-size: 1.5em;
 }
 footer{    
-    
-    border: 1px solid red;    
     display: flex;
     flex-direction: column;
-    qjustify-content: space-evenly;
-    /*si lo activo va sin padding el div*/
     justify-content: center;
-    qheight: 80px;
-    qpadding: 0 0 50px 0;
     text-align: center;
+    border-top: 1px solid #FFFFFF;
 }
-footer div{
-    qmargin: auto 0;
-    qborder: 1px solid blue;
+footer>div{
     padding: 20px 0;
-    
 }
+.footer_div_autor>div{
+    font-size: 1em;
+    display: inline-block;
+    padding: 0 0 0 10px;
+    margin-bottom: 20px;
+}
+.footer_div_autor div p{
+    margin: 5px 0;
+}
+.footer_div_autor div ~ div{
+    margin-left: 30px;
+}
+
 
 qfooter{
     position: absolute;
@@ -153,7 +122,7 @@ qfooter{
 }
 @media screen and (max-width:660px) {
     body{
-        font-size: 11px;
+        font-size: 0.9em;
     }
     .container{
         padding: 0;
@@ -167,23 +136,25 @@ qfooter{
         padding: 0;
     }
     .ejemplos button{
-        padding: 2px;
+        padding: 5px;
     }
-
     footer{
-        font-size: 1.3em;
-        padding: 10px 0 20px 0;
         color:red;
         display: block;
         text-align: center;
-
         height: min-content;
-        border: 1px solid white;
     }
     footer div{
-        qpadding: 10px 0;
+        padding: 10px;
     }
-    footer div~div{
-        qborder-left: none;
+    .footer_div_autor div~div{
+        border: none;
+        margin: 0 0 20px 0;
+    }
+    .footer_div_autor>div{
+        border: none;
+        display: block;
+        font-size: 1em;
+        padding: 0;
     }
 }
