@@ -1,7 +1,7 @@
 {
   "name": "api-basica",
   "version": "1.0.0",
-  "description": "Una api basica de albures",
+  "description": "Una api json de albures mexicanos",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
